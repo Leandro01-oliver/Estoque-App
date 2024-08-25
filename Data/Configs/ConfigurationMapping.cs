@@ -9,7 +9,7 @@ namespace Estoque_App.Data.Configs
     {
         public ConfigurationMapping()
         {
-            CreateMap<Produto, ProdutoVm>().ReverseMap().PreserveReferences();
+            CreateMap<Produto, ProdutoVm>().ForMember(dest => dest.MidiaVm, opt => opt.MapFrom(src => src.Midia)).ReverseMap().PreserveReferences();
             CreateMap<Midia, MidiaVm>().ReverseMap().PreserveReferences();
         }
     }

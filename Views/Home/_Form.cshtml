@@ -1,0 +1,24 @@
+﻿@using Estoque_App.Data.Models
+@model ProdutoVm;
+
+<div class="container-fluid">
+    <form asp-action="Cadastrar" asp-controller="Home" method="post" enctype="multipart/form-data" class="h-100">
+        <input asp-for="ProdutoId" class="form-control" type="hidden" />
+        <div class="form-group">
+            <label asp-for="Nome"></label>
+            <input asp-for="Nome" class="form-control" />
+        </div>
+
+        <div class="form-group my-3">
+            <label asp-for="Descricao"></label>
+            <input asp-for="Descricao" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Imagem para o Produto</label>
+            <input class="form-control" type="file" accept="image/*" name="file" id="file" />
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Cadastrar</button>
+    </form>
+</div>

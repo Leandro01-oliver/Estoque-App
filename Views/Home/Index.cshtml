@@ -1,27 +1,7 @@
-﻿@{
+﻿@using Estoque_App.Data.Models
+@{
     ViewData["Title"] = "Home Page";
 }
+@model IEnumerable<ProdutoVm>;
 
-<!-- Upload Image Form -->
-<h2>Upload Image</h2>
-<form asp-controller="Home" asp-action="UploadImage" method="post" enctype="multipart/form-data">
-    <label for="uploadFile" class="form-label">Select image to upload:</label>
-    <input type="file" id="uploadFile" name="file" accept="image/*" class="form-control"  required>
-    <button type="submit" class="btn btn-primary mt-3">Upload</button>
-</form>
-
-<!-- Delete Image Form -->
-<h2>Delete Image</h2>
-<form asp-controller="Home" asp-action="DeleteImage" method="post">
-    <label for="deleteFilePath" class="form-label">Enter the path of the image to delete:</label>
-    <input type="text" id="deleteFilePath" name="filePath" class="form-control" required>
-    <button type="submit" class="btn btn-primary mt-3">Delete</button>
-</form>
-
-<!-- Get Image Form -->
-<h2>Get Image</h2>
-<form asp-controller="Home" asp-action="GetImage" method="get" target="_blank">
-    <label for="getFilePath" class="form-label">Enter the path of the image to view:</label>
-    <input type="text" id="getFilePath" name="filePath" class="form-control" required>
-    <button type="submit" class="btn btn-primary mt-3">View Image</button>
-</form>
+<partial name="_Lista" model="Model"/>

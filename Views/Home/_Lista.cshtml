@@ -1,0 +1,40 @@
+﻿@using Estoque_App.Data.Models
+@model IEnumerable<ProdutoVm>;
+
+
+    <div class="container mt-4">
+    <h2 class="mb-4">Lista de Produtos</h2>
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Produto ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Mídia Nome</th>
+                <th scope="col">Mídia URL</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var produto in Model)
+            {
+                <tr>
+                    <td>@produto.ProdutoId</td>
+                    <td>@produto.Nome</td>
+                    <td>@produto.Descricao</td>
+                    <td>@produto.MidiaVm?.Nome</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(produto.MidiaVm?.Url))
+                        {
+                            <a href="@produto.MidiaVm.Url" target="_blank">Visualizar Mídia</a>
+                        }
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Editar", "Home", new { produtoId = produto.ProdutoId })" class="btn btn-sm btn-warning">Editar</a>
+                        @* <a href="@Url.Action("Deletar", "Home", new { id = produto.ProdutoId })" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja excluir este produto?');">Deletar</a> *@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

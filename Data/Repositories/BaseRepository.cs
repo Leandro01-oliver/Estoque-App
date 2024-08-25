@@ -19,6 +19,7 @@ namespace Estoque_App.Data.Repositories
         public async Task AddAsync(TEntity entity)
         {
             await _db.AddAsync(entity);
+            await _db.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>>? expression = null, int pageNumber = 1,
@@ -101,6 +102,7 @@ namespace Estoque_App.Data.Repositories
         public void Update(TEntity entity)
         {
            _db?.Update(entity);
+           _db?.SaveChanges();
         }
 
         public void Dispose()
